@@ -5,6 +5,8 @@ export class Game extends Scene
     camera: Phaser.Cameras.Scene2D.Camera;
     background: Phaser.GameObjects.Image;
     msg_text : Phaser.GameObjects.Text;
+    ship: Phaser.Physics.Arcade.Image;
+
 
 
     constructor ()
@@ -17,10 +19,12 @@ export class Game extends Scene
         this.camera = this.cameras.main;
         this.camera.setBackgroundColor(0x00000);
 
-        this.background = this.add.image(512, 384, 'background');
-        this.background.setAlpha(0.5);
+        // this.background = this.add.image(512, 384, 'background');
+        // this.background.setAlpha(0.5);
 
-        this.msg_text = this.add.text(512, 384, 'Make something fun!\nand share it with us:\nsupport@phaser.io', {
+        // this.ship = this.physics.add.image(100, 450, 'ship');
+
+        this.msg_text = this.add.text(512, 384, 'SpaceMech!', {
             fontFamily: 'Arial Black', fontSize: 38, color: '#8888ff',
             stroke: '#000000', strokeThickness: 8,
             align: 'center'
