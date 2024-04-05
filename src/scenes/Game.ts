@@ -6,7 +6,7 @@ export class Game extends Scene
     background: Phaser.GameObjects.Image;
     msg_text : Phaser.GameObjects.Text;
     ship: Phaser.Physics.Arcade.Image;
-
+    cursors: Phaser.Types.Input.Keyboard.CursorKeys | undefined;
 
 
     constructor ()
@@ -22,7 +22,8 @@ export class Game extends Scene
         // this.background = this.add.image(512, 384, 'background');
         // this.background.setAlpha(0.5);
 
-        // this.ship = this.physics.add.image(100, 450, 'ship');
+        this.ship = this.physics.add.image(200, 250, 'ship');
+        this.cursors = this.input.keyboard?.createCursorKeys();
 
         this.msg_text = this.add.text(512, 384, 'SpaceMech!', {
             fontFamily: 'Arial Black', fontSize: 38, color: '#8888ff',
@@ -37,4 +38,27 @@ export class Game extends Scene
 
         });
     }
+
+    update ()
+    {
+        if (this.cursors?.left.isDown)
+        {
+            this.ship.setVelocityX(-160);
+        }
+        else if (this.cursors?.right.isDown)
+        {
+            this.ship.setVelocityX(160);
+        }
+        else if (this.cursors?.up.isDown)
+        {
+            this.ship.setVelocityY(-160);
+        }
+        else if (this.cursors?.down.isDown)
+        {
+            this.ship.setVelocityY(160);
+        }
+    }
+
+
+
 }
